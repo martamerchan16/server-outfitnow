@@ -23,7 +23,6 @@ const bookingSchema = new Schema(
             shoeSize: {
                 type: Number,
                 required: [true, 'Title is required.'],
-                enum: ['XS', 'S', 'M', 'L', 'XL', 'XXL']
             }
         },
         deadline: {
