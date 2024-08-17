@@ -26,16 +26,7 @@ The API offers a variety of routes to work with *service* and *booking* document
 
 <br>
 
-#### Booking routes
 
-| HTTP verb | URL                               | Request body | Action                                                         |
-| --------- | --------------------------------- | ------------ | -------------------------------------------------------------- |
-| GET       | `/api/students`                   | (empty)      | Returns all the students in JSON format                        |
-| GET       | `/api/students/cohort/:cohortId`  | (empty)      | Returns all the students of a specified cohort in JSON format  |
-| GET       | `/api/students/:studentId`        | (empty)      | Returns the specified student by id                            |
-| POST      | `/api/students`                   | JSON         | Creates a new student **with their respective cohort id**      |
-| PUT       | `/api/students/:studentId`        | JSON         | Updates the specified student by id                            |
-| DELETE    | `/api/students/:studentId`        | (empty)      | Deletes the specified cohort by id                             |
 
 #### Bookings routes
 
@@ -50,55 +41,13 @@ The API offers a variety of routes to work with *service* and *booking* document
 | GET       | `/api/bookings/users/:userId`       | (empty)      | Returns the bookings asociated to a specific user    |
 
 
-
-<br>
-
-#### Services routes
-
-<hr>
-
-<br>
-
-## Models
-
 <br>
 
 #### Service Model
-<!-- 
-#### Booking Model
-
-| Field          | Data Type        | Description                                 |
-|----------------|------------------|---------------------------------------------|
-| `cohortSlug`     | *`String`*           | Unique identifier for the cohort. Required. |
-| `cohortName`     | *`String`*           | Name of the cohort. Required.              |
-| `program`        | *`String`*           | Program/course name. Allowed values: "Web Dev", "UX/UI", "Data Analytics", "Cybersecurity". |
-| `format`         | *`String`*           | Format of the cohort. Allowed values: "Full Time", "Part Time". |
-| `campus`         | *`String`*           | Campus location. Allowed values: "Madrid", "Barcelona", "Miami", "Paris", "Berlin", "Amsterdam", "Lisbon", "Remote". |
-| `startDate`      | *`Date`*             | Start date of the cohort. Default: Current date. |
-| `endDate`        | *`Date`*             | End date of the cohort.                     |
-| `inProgress`     | *`Boolean`*          | Indicates if the cohort is currently in progress. Default: false. |
-| `programManager` | *`String`*           | Name of the program manager. Required.      |
-| `leadTeacher`    | *`String`*           | Name of the lead teacher. Required.         |
-| `totalHours`     | *`Number`*           | Total hours of the cohort program. Default: 360. | -->
-
 
 <br>
 
 #### Booking Model
-
-<!-- | Field        | Data Type                            | Description                                  |
-|--------------|--------------------------------------|----------------------------------------------|
-| `firstName`    | *`String`*                               | First name of the student. Required.        |
-| `lastName`     | *`String`*                               | Last name of the student. Required.         |
-| `email`        | *`String`*                               | Email address of the student. Required, unique. |
-| `phone`        | *`String`*                               | Phone number of the student. Required.      |
-| `linkedinUrl`  | *`String`*                               | URL to the student's LinkedIn profile. Default: Empty string. |
-| `languages`    | *`Array`* of Strings                     | Spoken languages of the student. Allowed values: "English", "Spanish", "French", "German", "Portuguese", "Dutch", "Other". |
-| `program`      | *`String`*                               | Type of program the student is enrolled in. Allowed values: "Web Dev", "UX/UI", "Data Analytics", "Cybersecurity". |
-| `background`   | *`String`*                               | Background information about the student. Default: Empty. |
-| `image`        | *`String`*                               | URL to the student's profile image. Default: https://i.imgur.com/r8bo8u7.png . |
-| `cohort`       | *`ObjectId`*,                            | Reference *_id* of the cohort the student belongs to. |
-| `projects`     | *`Array`*                                | Array of the student's projects.   | -->
 | `measurements` | *`Object`*       | height, top size, bottom size and shoe size from the client. Required|
 | `deadline`     | *`Date`*         | Date when the service is needed. Required            |
 | `comment`      | *`String`*       | Estra info |
