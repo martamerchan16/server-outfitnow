@@ -9,24 +9,24 @@ Throughout the project, you should use this documentation as a reference and a g
 ## Routes
 
 In this section, you will find detailed information about the different routes available in the API.
-The API offers a variety of routes to work with *cohort* and *student* documents. Each route is associated with a specific HTTP verb and URL, allowing you to perform CRUD (Create, Read, Update, and Delete) actions on the data.
+The API offers a variety of routes to work with *service* and *booking* documents. Each route is associated with a specific HTTP verb and URL, allowing you to perform CRUD (Create, Read, Update, and Delete) actions on the data.
 
 <br>
 
-#### Cohort routes
+#### Service routes
 
-| HTTP verb | URL                        | Request body | Action                                 |
-| --------- | -------------------------- | ------------ | -------------------------------------- |
-| GET       | `/api/cohorts`             | (empty)      | Returns all the cohorts in JSON format |
-| GET       | `/api/cohorts/:cohortId`   | (empty)      | Returns the specified cohort by id     |
-| POST      | `/api/cohorts`             | JSON         | Creates a new cohort                   |
-| PUT       | `/api/cohorts/:cohortId`   | JSON         | Updates the specified cohort by id     |
-| DELETE    | `/api/cohorts/:cohortId`   | (empty)      | Deletes the specified cohort by id     |
+| HTTP verb | URL                         | Request body | Action                                 |
+| --------- | --------------------------  | ------------ | -------------------------------------- |
+| GET       | `/api/services`             | (empty)      | Returns all the services in JSON format |
+| GET       | `/api/services/:serviceId`  | (empty)      | Returns the specified service by id     |
+| POST      | `/api/services`             | JSON         | Creates a new cohort                   |
+| PUT       | `/api/services/:serviceId`  | JSON         | Updates the specified cohort by id     |
+| DELETE    | `/api/services/:serviceId`  | (empty)      | Deletes the specified cohort by id     |
 
 
 <br>
 
-#### Student routes
+#### Booking routes
 
 | HTTP verb | URL                               | Request body | Action                                                         |
 | --------- | --------------------------------- | ------------ | -------------------------------------------------------------- |
@@ -48,8 +48,8 @@ The *Models* section holds information about the data models for your database. 
 
 <br>
 
-#### Cohort Model
-
+#### Service Model
+<!-- 
 | Field          | Data Type        | Description                                 |
 |----------------|------------------|---------------------------------------------|
 | `cohortSlug`     | *`String`*           | Unique identifier for the cohort. Required. |
@@ -62,14 +62,14 @@ The *Models* section holds information about the data models for your database. 
 | `inProgress`     | *`Boolean`*          | Indicates if the cohort is currently in progress. Default: false. |
 | `programManager` | *`String`*           | Name of the program manager. Required.      |
 | `leadTeacher`    | *`String`*           | Name of the lead teacher. Required.         |
-| `totalHours`     | *`Number`*           | Total hours of the cohort program. Default: 360. |
+| `totalHours`     | *`Number`*           | Total hours of the cohort program. Default: 360. | -->
 
 
 <br>
 
-#### Student Model
+#### Booking Model
 
-| Field        | Data Type                            | Description                                  |
+<!-- | Field        | Data Type                            | Description                                  |
 |--------------|--------------------------------------|----------------------------------------------|
 | `firstName`    | *`String`*                               | First name of the student. Required.        |
 | `lastName`     | *`String`*                               | Last name of the student. Required.         |
@@ -81,7 +81,7 @@ The *Models* section holds information about the data models for your database. 
 | `background`   | *`String`*                               | Background information about the student. Default: Empty. |
 | `image`        | *`String`*                               | URL to the student's profile image. Default: https://i.imgur.com/r8bo8u7.png . |
 | `cohort`       | *`ObjectId`*,                            | Reference *_id* of the cohort the student belongs to. |
-| `projects`     | *`Array`*                                | Array of the student's projects.   |
+| `projects`     | *`Array`*                                | Array of the student's projects.   | -->
 
 
 <br>
