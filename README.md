@@ -53,7 +53,7 @@ The API offers a variety of routes to work with *service* and *booking* document
 | GET       | `/api/users/:userId`             | Returns the specified user by id                              |
 | PUT       | `/api/users/:userId`             | Updates the specified user by id                              |
 | DEL       | `/api/users/:userId`             | Deletes the specified user by id                              |
-| GET       | `/api/users/services/:serviceId` | Returns the stylists(usuario) asociated to a specific service |
+| GET       | `/api/users/services/:serviceId` | Returns the stylists(users) asociated to a specific service |
 
 <br>
 

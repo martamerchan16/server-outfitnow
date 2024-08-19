@@ -40,10 +40,10 @@ const userSchema = new Schema(
       enum: ['ADMIN', 'USER', 'STYLIST'],
       default: 'USER'
     },
-    services: {
-      type: [Schema.Types.ObjectId],
+    services: [{
+      type: Schema.Types.ObjectId,
       ref: 'Service'
-    }
+    }]
   },
   {
     timestamps: true
