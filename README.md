@@ -15,52 +15,63 @@ The API offers a variety of routes to work with *service* and *booking* document
 
 #### Service routes
 
-| HTTP verb | URL                         | Request body | Action                                 |
-| --------- | --------------------------  | ------------ | -------------------------------------- |
-| GET       | `/api/services`             | (empty)      | Returns all the services in JSON format |
-| GET       | `/api/services/:serviceId`  | (empty)      | Returns the specified service by id     |
-| POST      | `/api/services`             | JSON         | Creates a new cohort                   |
-| PUT       | `/api/services/:serviceId`  | JSON         | Updates the specified cohort by id     |
-| DELETE    | `/api/services/:serviceId`  | (empty)      | Deletes the specified cohort by id     |
+| HTTP verb | URL                         | Action                                  |
+| --------- | --------------------------  | --------------------------------------  |
+| GET       | `/api/services`             | Returns all the services in JSON format |
+| GET       | `/api/services/:serviceId`  | Returns the specified service by id     |
+| POST      | `/api/services`             | Creates a new cohort                    |
+| PUT       | `/api/services/:serviceId`  | Updates the specified cohort by id      |
+| DELETE    | `/api/services/:serviceId`  | Deletes the specified cohort by id      |
 
 
 <br>
 
 
-
 #### Bookings routes
 
-| HTTP verb | URL                                 | Request body | Action                                               |
-| --------- | ----------------------------------- | ------------ | ---------------------------------------------------- |
-| GET       | `/api/bookings`                     | (empty)      | Returns all the bookings in JSON format              |
-| POST      | `/api/bookings`                     | JSON         | Creates a new booking                                |
-| GET       | `/api/bookings/:bookingId`          | (empty)      | Returns the specified booking by id                  |
-| PUT       | `/api/bookings/:bookingId`          | JSON         | Updates the specified booking by id                  |
-| DEL       | `/api/bookings/:bookingId`          | (empty)      | Deletes the specified booking by id                  |
-| GET       | `/api/bookings/services/:serviceId` | (empty)      | Returns the bookings asociated to a specific service |
-| GET       | `/api/bookings/users/:userId`       | (empty)      | Returns the bookings asociated to a specific user    |
+| HTTP verb | URL                                 | Action                                               |
+| --------- | ----------------------------------- | ---------------------------------------------------- |
+| GET       | `/api/bookings`                     | Returns all the bookings in JSON format              |
+| POST      | `/api/bookings`                     | Creates a new booking                                |
+| GET       | `/api/bookings/:bookingId`          | Returns the specified booking by id                  |
+| PUT       | `/api/bookings/:bookingId`          | Updates the specified booking by id                  |
+| DEL       | `/api/bookings/:bookingId`          | Deletes the specified booking by id                  |
+| GET       | `/api/bookings/services/:serviceId` | Returns the bookings asociated to a specific service |
+| GET       | `/api/bookings/users/:userId`       | Returns the bookings asociated to a specific user    |
 
+
+<br>
+
+#### Auth routes
+
+| HTTP verb | URL                    | Action                                               |
+| --------- | -----------------------| ---------------------------------------------------- |
+| POST      | `/api/signup`          | Returns all the bookings in JSON format              |
+| POST      | `/api/login`           | Creates a new booking                                |
+| GET       | `/api/verify`          | Returns the specified booking by id                  |
 
 <br>
 
 #### Service Model
 
+| Field          | Data Type            | Description                    |
+|----------------|----------------------|--------------------------------|
+| `title`        | *`String`*           | Name of services. Required.    |
+| `images`       | *`Array`* of Strings | Array of URL images. Required. |
+| `packs`        | *`String`*           | Type of pack.                  |
+
 <br>
 
 #### Booking Model
+| Field          | Data Type        | Description                                                          |
+|----------------|------------------|----------------------------------------------------------------------|
 | `measurements` | *`Object`*       | height, top size, bottom size and shoe size from the client. Required|
-| `deadline`     | *`Date`*         | Date when the service is needed. Required            |
-| `comment`      | *`String`*       | Estra info |
-| `stylist`      | *`ObjectId`*     | Stylist who offers the service |
-| `client`       | *`ObjectId`*     | Client who books the service|
-| `service`      | *`ObjectId`*     | Service booked |
-| `pack`         | *`String`*       | Choosen pack                     |
+| `deadline`     | *`Date`*         | Date when the service is needed. Required                            |
+| `comment`      | *`String`*       | Extra info                                                           |     
+| `stylist`      | *`ObjectId`*     | Stylist who offers the service                                       |
+| `client`       | *`ObjectId`*     | Client who books the service                                         |
+| `service`      | *`ObjectId`*     | Service booked                                                       |
+| `pack`         | *`String`*       | Choosen pack                                                         |
 
 
-<br>
-
-#### SService Model
-
-
-<br>
 
