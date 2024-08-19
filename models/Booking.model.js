@@ -6,23 +6,23 @@ const bookingSchema = new Schema(
 
             heigth: {
                 type: Number,
-                required: [true, 'Title is required.'],
+                required: [true, 'Height is required.'],
             },
 
             topSize: {
                 type: String,
-                required: [true, 'Title is required.'],
+                required: [true, 'Size is required.'],
                 enum: ['XS', 'S', 'M', 'L', 'XL', 'XXL']
             },
 
             bottomSize: {
                 type: String,
-                required: [true, 'Title is required.'],
+                required: [true, 'Size is required.'],
                 enum: ['XS', 'S', 'M', 'L', 'XL', 'XXL']
             },
             shoeSize: {
                 type: Number,
-                required: [true, 'Title is required.'],
+                required: [true, 'Size is required.'],
             }
         },
         deadline: {
