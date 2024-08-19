@@ -20,7 +20,6 @@ router.get('/bookings', (req, res, next) => {
 
     Booking
         .find()
-        //.populate('stylist client service')
         //.select({ service: 1, pack: 1, deadline: 1, client: 1 })
         .then(response => res.json(response))
         .catch(err => next(err))
@@ -64,14 +63,24 @@ router.delete('/bookings/:bookingId', (req, res, next) => {
 
 router.get('/bookings/users/:userId', (req, res, next) => {
 
-    const { userId } = req.params
+    const { userId: client } = req.params
 
     Booking
-        .find({ client: userId })
+        .find({ client })
         .then(response => res.json(response))
         .catch(err => next(err))
 
 
+})
+
+
+router.get('/bookings/services/:serviceId', (req, res, next) => {
+    const { serviceId: services } = req.params
+
+    Booking
+        .find({ services })
+        .then(response => res.json(response))
+        .catch(err => next(err))
 })
 
 
