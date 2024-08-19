@@ -3,8 +3,6 @@ const router = require('express').Router()
 const Booking = require('./../models/Booking.model')
 
 
-
-
 router.post('/bookings', (req, res, next) => {
 
     const { measurements, deadline, comment, stylist, client, service, pack } = req.body
@@ -20,7 +18,7 @@ router.get('/bookings', (req, res, next) => {
 
     Booking
         .find()
-        //.populate('stylist client service')
+        .populate('stylist', 'client', 'service')
         //.select({ service: 1, pack: 1, deadline: 1, client: 1 })
         .then(response => res.json(response))
         .catch(err => next(err))
@@ -33,6 +31,7 @@ router.get('/bookings/:bookingId', (req, res, next) => {
 
     Booking
         .findById(bookingId)
+        .populate('stylist', 'client', 'service')
         .then(response => res.json(response))
         .catch(err => next(err))
 })
@@ -64,10 +63,11 @@ router.delete('/bookings/:bookingId', (req, res, next) => {
 
 router.get('/bookings/users/:userId', (req, res, next) => {
 
-    const { userId } = req.params
+    const { userId: client } = req.params
 
     Booking
-        .find({ client: userId })
+        .find({ client })
+        .populate('stylist', 'client', 'service')
         .then(response => res.json(response))
         .catch(err => next(err))
 

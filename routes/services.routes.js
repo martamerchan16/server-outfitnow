@@ -16,6 +16,7 @@ router.get("/services", (req, res, next) => {
 
     Service
         .find()
+        // TODO .select()
         .then((services) => res.json(services))
         .catch(err => next(err))
 })

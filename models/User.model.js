@@ -11,7 +11,8 @@ const userSchema = new Schema(
     },
     password: {
       type: String,
-      required: [true, 'Password is required.']
+      required: [true, 'Password is required.'],
+      minLength: 6
     },
     userName: {
       type: String,
@@ -38,6 +39,10 @@ const userSchema = new Schema(
       type: String,
       enum: ['ADMIN', 'USER', 'STYLIST'],
       default: 'USER'
+    },
+    services: {
+      type: [Schema.Types.ObjectId],
+      ref: 'Service'
     }
   },
   {

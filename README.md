@@ -13,7 +13,7 @@ The API offers a variety of routes to work with *service* and *booking* document
 
 <br>
 
-#### Service routes
+#### Services routes
 
 | HTTP verb | URL                         | Action                                  |
 | --------- | --------------------------  | --------------------------------------  |
@@ -22,6 +22,8 @@ The API offers a variety of routes to work with *service* and *booking* document
 | POST      | `/api/services`             | Creates a new cohort                    |
 | PUT       | `/api/services/:serviceId`  | Updates the specified cohort by id      |
 | DELETE    | `/api/services/:serviceId`  | Deletes the specified cohort by id      |
+| GET       | `/api/services/search`      | Returns all the services filter by title|
+
 
 
 <br>
@@ -42,6 +44,19 @@ The API offers a variety of routes to work with *service* and *booking* document
 
 <br>
 
+#### Users routes
+
+| HTTP verb | URL                              | Action                                                        |
+| --------- | -------------------------------- | ------------------------------------------------------------- |
+| GET       | `/api/users`                     | Returns all the users in JSON format                          |
+| GET       | `/api/users/:role`               | Returns all the users by role in JSON format                  |
+| GET       | `/api/users/:userId`             | Returns the specified user by id                              |
+| PUT       | `/api/users/:userId`             | Updates the specified user by id                              |
+| DEL       | `/api/users/:userId`             | Deletes the specified user by id                              |
+| GET       | `/api/users/services/:serviceId` | Returns the stylists(usuario) asociated to a specific service |
+
+<br>
+
 #### Auth routes
 
 | HTTP verb | URL                    | Action                                               |
@@ -49,6 +64,16 @@ The API offers a variety of routes to work with *service* and *booking* document
 | POST      | `/api/signup`          | Returns all the bookings in JSON format              |
 | POST      | `/api/login`           | Creates a new booking                                |
 | GET       | `/api/verify`          | Returns the specified booking by id                  |
+
+<br>
+
+#### User Model jabkcdb,sdhbv,jzdbsh,vHJSDG;vjUGSFgvk
+
+| Field          | Data Type            | Description                    |
+|----------------|----------------------|--------------------------------|
+| `title`        | *`String`*           | Name of services. Required.    |
+| `images`       | *`Array`* of Strings | Array of URL images. Required. |
+| `packs`        | *`String`*           | Type of pack.                  |
 
 <br>
 
