@@ -27,8 +27,8 @@ router.put("/users/:userId", (req, res, next) => {
     const { phone, avatar, styles, gallery, aboutMe, services } = req.body
 
     User
-        .findByIdAndUpdate(userId, { phone, avatar, styles, gallery, aboutMe, services })
-        .then((service) => res.json(service))
+        .findByIdAndUpdate(userId, { phone, avatar, styles, gallery, aboutMe, services }, { new: true })
+        .then((user) => res.json(user))
         .catch(err => next(err))
 })
 
@@ -48,7 +48,7 @@ router.get("/users/services/:serviceId", (req, res, next) => {
 
     User
         .find({ services })
-        // .select('hay que hacer un deep , researching')
+        // TODO:.select('hay que hacer un deep , researching')
         .populate('services')
         .then((users) => res.json(users))
         .catch(err => next(err))
@@ -57,7 +57,6 @@ router.get("/users/services/:serviceId", (req, res, next) => {
 router.get('/users/role/:role', (req, res, next) => {
 
     const { role } = req.params
-
 
     User
         .find({ role: { $regex: role, $options: 'i' } })

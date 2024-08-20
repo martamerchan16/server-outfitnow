@@ -49,7 +49,7 @@ The API offers a variety of routes to work with *service* and *booking* document
 | HTTP verb | URL                              | Action                                                        |
 | --------- | -------------------------------- | ------------------------------------------------------------- |
 | GET       | `/api/users`                     | Returns all the users in JSON format                          |
-| GET       | `/api/users/:role`               | Returns all the users by role in JSON format                  |
+| GET       | `/api/users/role/:role`          | Returns all the users by role in JSON format                  |
 | GET       | `/api/users/:userId`             | Returns the specified user by id                              |
 | PUT       | `/api/users/:userId`             | Updates the specified user by id                              |
 | DEL       | `/api/users/:userId`             | Deletes the specified user by id                              |
@@ -61,9 +61,9 @@ The API offers a variety of routes to work with *service* and *booking* document
 
 | HTTP verb | URL                    | Action                                               |
 | --------- | -----------------------| ---------------------------------------------------- |
-| POST      | `/api/signup`          | Returns all the bookings in JSON format              |
-| POST      | `/api/login`           | Creates a new booking                                |
-| GET       | `/api/verify`          | Returns the specified booking by id                  |
+| POST      | `/api/auth/signup`          | Returns all the bookings in JSON format         |
+| POST      | `/api/auth/login`           | Creates a new booking                           |
+| GET       | `/api/auth/verify`          | Returns the specified booking by id             |
 
 <br>
 

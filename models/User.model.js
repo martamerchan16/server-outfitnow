@@ -44,13 +44,24 @@ const userSchema = new Schema(
     services: [{
       type: Schema.Types.ObjectId,
       ref: 'Service'
-    }]
+    }],
+    location: {
+      type: {
+        type: String
+      },
+      coordinates: {
+        type: [Number]
+      }
+    }
   },
   {
     timestamps: true
   }
-);
+)
 
-const User = model("User", userSchema);
+userSchema.index({ location: '2dsphere' })
+
+const User = model("User", userSchema)
+
 
 module.exports = User;
