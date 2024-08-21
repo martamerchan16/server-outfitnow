@@ -26,10 +26,10 @@ const userSchema = new Schema(
     avatar: {
       type: String,
     },
-    styles: {
-      type: [String],
-      enum: ['Casual', 'Chic', 'Boho', 'Vintage', 'Preppy', 'Business', 'Edgy', 'Cowboy', 'Cozy', 'Gothic', 'Rock', 'Classic Elegance', 'Aute Cuture']
-    },
+    styles: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Style'
+    }],
     gallery: {
       type: [String],
     },

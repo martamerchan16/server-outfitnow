@@ -7,6 +7,7 @@ router.get('/users', (req, res, next) => {
 
     User
         .find()
+        .populate('styles')
         .then(users => res.json(users))
         .catch(err => next(err))
 })
@@ -17,6 +18,7 @@ router.get('/users/:userId', (req, res, next) => {
 
     User
         .findById(userId)
+        .populate('styles')
         .then(user => res.json(user))
         .catch(err => next(err))
 })
@@ -49,7 +51,7 @@ router.get("/users/services/:serviceId", (req, res, next) => {
     User
         .find({ services })
         // TODO:.select('hay que hacer un deep , researching')
-        .populate('services')
+        .populate('services styles')
         .then((users) => res.json(users))
         .catch(err => next(err))
 })

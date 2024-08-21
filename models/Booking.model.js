@@ -48,12 +48,22 @@ const bookingSchema = new Schema(
         pack: {
             type: 'String',
             enum: ['Premium', 'Basic', 'Glam']
+        },
+        location: {
+            type: {
+                type: String
+            },
+            coordinates: {
+                type: [Number]
+            }
         }
     },
     {
         timestamps: true
     }
 )
+
+bookingSchema.index({ location: '2dsphere' })
 
 const Booking = model("Booking", bookingSchema)
 

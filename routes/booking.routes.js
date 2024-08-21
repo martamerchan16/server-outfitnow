@@ -8,10 +8,15 @@ require('./../models/User.model')
 
 router.post('/bookings', (req, res, next) => {
 
-    const { measurements, deadline, comment, stylist, client, service, pack } = req.body
+    const { measurements, deadline, comment, stylist, client, service, pack, latitude, longitude } = req.body
+
+    const location = {
+        type: 'Point',
+        coordinates: [longitude, latitude]
+    }
 
     Booking
-        .create({ measurements, deadline, comment, stylist, client, service, pack })
+        .create({ measurements, deadline, comment, stylist, client, service, pack, location })
         .then(() => res.sendStatus(201))
         .catch(err => next(err))
 })

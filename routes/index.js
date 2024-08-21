@@ -11,4 +11,7 @@ module.exports = app => {
 
     const userRoutes = require('./user.routes')
     app.use('/api', userRoutes)
+
+    const styleRoutes = require('./style.routes')
+    app.use('/api', styleRoutes)
 }
