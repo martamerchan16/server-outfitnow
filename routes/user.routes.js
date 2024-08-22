@@ -7,7 +7,7 @@ router.get('/users', (req, res, next) => {
 
     User
         .find()
-        .populate('styles')
+        .populate('services styles')
         .then(users => res.json(users))
         .catch(err => next(err))
 })
@@ -18,7 +18,7 @@ router.get('/users/:userId', (req, res, next) => {
 
     User
         .findById(userId)
-        .populate('styles')
+        .populate('services styles')
         .then(user => res.json(user))
         .catch(err => next(err))
 })

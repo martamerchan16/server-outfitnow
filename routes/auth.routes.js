@@ -9,7 +9,7 @@ const isAuthenticated = require("../middleware/verifyToken")
 
 router.post('/auth/signup', (req, res, next) => {
 
-    const { email, password, userName, phone, avatar, styles, gallery, aboutMe, services, latitude, longitude } = req.body
+    const { email, password, userName, role, phone, avatar, styles, gallery, aboutMe, services, latitude, longitude } = req.body
 
     const location = {
         type: 'Point',
@@ -45,7 +45,7 @@ router.post('/auth/signup', (req, res, next) => {
             const hashedPassword = bcrypt.hashSync(password, salt)
 
             User
-                .create({ userName, email, password: hashedPassword, phone, avatar, styles, gallery, aboutMe, services, location })
+                .create({ userName, email, password: hashedPassword, role, phone, avatar, styles, gallery, aboutMe, services, location })
                 .then(() => res.sendStatus(201))
                 .catch(err => next(err))
 
