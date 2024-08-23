@@ -64,6 +64,8 @@ router.get('/users/role/:role', (req, res, next) => {
 
     User
         .find({ role: { $regex: role, $options: 'i' } })
+        .select({ userName: 1, avatar: 1, styles: 1, services: 1 })
+        .populate('services styles')
         .then(specificRole => res.json(specificRole))
         .catch(err => next(err))
 })
