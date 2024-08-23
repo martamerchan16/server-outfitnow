@@ -4,7 +4,7 @@ const bookingSchema = new Schema(
     {
         measurements: {
 
-            heigth: {
+            height: {
                 type: Number,
                 required: [true, 'Height is required.'],
             },
