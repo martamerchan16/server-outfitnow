@@ -19,9 +19,9 @@ The API offers a variety of routes to work with *service* and *booking* document
 | --------- | --------------------------  | --------------------------------------  |
 | GET       | `/api/services`             | Returns all the services in JSON format |
 | GET       | `/api/services/:serviceId`  | Returns the specified service by id     |
-| POST      | `/api/services`             | Creates a new cohort                    |
-| PUT       | `/api/services/:serviceId`  | Updates the specified cohort by id      |
-| DELETE    | `/api/services/:serviceId`  | Deletes the specified cohort by id      |
+| POST      | `/api/services`             | Creates a new service                    |
+| PUT       | `/api/services/:serviceId`  | Updates the specified services by id      |
+| DELETE    | `/api/services/:serviceId`  | Deletes the specified services by id      |
 | GET       | `/api/services/search`      | Returns all the services filter by title|
 
 

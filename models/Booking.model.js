@@ -47,15 +47,7 @@ const bookingSchema = new Schema(
         },
         pack: {
             type: 'String',
-            enum: ['Premium', 'Basic', 'Glam']
-        },
-        location: {
-            type: {
-                type: String
-            },
-            coordinates: {
-                type: [Number]
-            }
+            enum: ['premium', 'basic', 'glam']
         }
     },
     {

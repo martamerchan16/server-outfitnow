@@ -2,7 +2,9 @@ const router = require("express").Router()
 
 const Service = require('./../models/Service.model')
 
-router.post("/services", (req, res, next) => {
+const isAuthenticated = require('./../middleware/verifyToken')
+
+router.post("/services", isAuthenticated, (req, res, next) => {
 
     const { title, images, packs } = req.body
 
@@ -41,7 +43,7 @@ router.get("/services/:serviceId", (req, res, next) => {
         .catch(err => next(err))
 })
 
-router.put("/services/:serviceId", (req, res, next) => {
+router.put("/services/:serviceId", isAuthenticated, (req, res, next) => {
 
     const { serviceId } = req.params
     const { title, images, packs } = req.body
@@ -52,7 +54,7 @@ router.put("/services/:serviceId", (req, res, next) => {
         .catch(err => next(err))
 })
 
-router.delete("/services/:serviceId", (req, res, next) => {
+router.delete("/services/:serviceId", isAuthenticated, (req, res, next) => {
 
     const { serviceId } = req.params
 

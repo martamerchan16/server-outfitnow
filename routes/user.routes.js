@@ -3,6 +3,8 @@ const router = require("express").Router()
 const User = require('./../models/User.model')
 const Service = require('./../models/Service.model')
 
+const isAuthenticated = require('./../middleware/verifyToken')
+
 router.get('/users', (req, res, next) => {
 
     User
@@ -12,7 +14,7 @@ router.get('/users', (req, res, next) => {
         .catch(err => next(err))
 })
 
-router.get('/users/:userId', (req, res, next) => {
+router.get('/users/:userId', isAuthenticated, (req, res, next) => {
 
     const { userId } = req.params
 
@@ -23,7 +25,7 @@ router.get('/users/:userId', (req, res, next) => {
         .catch(err => next(err))
 })
 
-router.put("/users/:userId", (req, res, next) => {
+router.put("/users/:userId", isAuthenticated, (req, res, next) => {
 
     const { userId } = req.params
     const { phone, avatar, styles, gallery, aboutMe, services } = req.body
@@ -34,7 +36,7 @@ router.put("/users/:userId", (req, res, next) => {
         .catch(err => next(err))
 })
 
-router.delete("/users/:userId", (req, res, next) => {
+router.delete("/users/:userId", isAuthenticated, (req, res, next) => {
 
     const { userId } = req.params
 

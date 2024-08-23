@@ -2,7 +2,9 @@ const router = require('express').Router()
 
 const Style = require('./../models/Style.model')
 
-router.post('/styles', (req, res, next) => {
+const isAuthenticated = require('./../middleware/verifyToken')
+
+router.post('/styles', isAuthenticated, (req, res, next) => {
     const { style } = req.body
 
     Style

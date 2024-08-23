@@ -4,11 +4,12 @@ const Booking = require('./../models/Booking.model')
 require('./../models/Service.model')
 require('./../models/User.model')
 
+const isAuthenticated = require('./../middleware/verifyToken')
 
-
-router.post('/bookings', (req, res, next) => {
+router.post('/bookings', isAuthenticated, (req, res, next) => {
 
     const { measurements, deadline, comment, stylist, client, service, pack, latitude, longitude } = req.body
+    const { _id } = req.payload
 
     const location = {
         type: 'Point',
@@ -16,24 +17,24 @@ router.post('/bookings', (req, res, next) => {
     }
 
     Booking
-        .create({ measurements, deadline, comment, stylist, client, service, pack, location })
+        .create({ measurements, deadline, comment, stylist, client: _id, service, pack, location })
         .then(() => res.sendStatus(201))
         .catch(err => next(err))
 })
 
 
-router.get('/bookings', (req, res, next) => {
+router.get('/bookings', isAuthenticated, (req, res, next) => {
 
     Booking
         .find()
         .populate('stylist client service')
-        //.select({ service: 1, pack: 1, deadline: 1, client: 1 })
+        //TODO:.select({ service: 1, pack: 1, deadline: 1, client: 1 })
         .then(response => res.json(response))
         .catch(err => next(err))
 })
 
 
-router.get('/bookings/:bookingId', (req, res, next) => {
+router.get('/bookings/:bookingId', isAuthenticated, (req, res, next) => {
 
     const { bookingId } = req.params
 
@@ -45,7 +46,7 @@ router.get('/bookings/:bookingId', (req, res, next) => {
 })
 
 
-router.put('/bookings/:bookingId', (req, res, next) => {
+router.put('/bookings/:bookingId', isAuthenticated, (req, res, next) => {
 
     const { bookingId } = req.params
     const { measurements, deadline, comment, stylist, client, service, pack } = req.body
@@ -58,7 +59,7 @@ router.put('/bookings/:bookingId', (req, res, next) => {
 })
 
 
-router.delete('/bookings/:bookingId', (req, res, next) => {
+router.delete('/bookings/:bookingId', isAuthenticated, (req, res, next) => {
 
     const { bookingId } = req.params
 
@@ -69,7 +70,7 @@ router.delete('/bookings/:bookingId', (req, res, next) => {
 })
 
 
-router.get('/bookings/users/:userId', (req, res, next) => {
+router.get('/bookings/users/:userId', isAuthenticated, (req, res, next) => {
 
     const { userId: client } = req.params
 
@@ -83,7 +84,7 @@ router.get('/bookings/users/:userId', (req, res, next) => {
 })
 
 
-router.get('/bookings/services/:serviceId', (req, res, next) => {
+router.get('/bookings/services/:serviceId', isAuthenticated, (req, res, next) => {
     const { serviceId: service } = req.params
 
     Booking
