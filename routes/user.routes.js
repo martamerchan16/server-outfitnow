@@ -14,7 +14,7 @@ router.get('/users', (req, res, next) => {
         .catch(err => next(err))
 })
 
-router.get('/users/:userId', isAuthenticated, (req, res, next) => {
+router.get('/users/:userId', /*isAuthenticated,*/(req, res, next) => {
 
     const { userId } = req.params
 

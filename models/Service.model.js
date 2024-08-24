@@ -10,6 +10,10 @@ const serviceSchema = new Schema(
             type: [String],
             required: [true, 'Image is required.'],
         },
+        coverImage: {
+            type: String,
+            required: [true, 'Image is required.'],
+        },
         packs: {
             basic: {
                 price: {

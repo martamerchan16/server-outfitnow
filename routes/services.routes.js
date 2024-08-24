@@ -6,10 +6,10 @@ const isAuthenticated = require('./../middleware/verifyToken')
 
 router.post("/services", isAuthenticated, (req, res, next) => {
 
-    const { title, images, packs } = req.body
+    const { title, images, coverImage, packs } = req.body
 
     Service
-        .create({ title, images, packs })
+        .create({ title, images, coverImage, packs })
         .then(() => res.sendStatus(201))
         .catch(err => next(err))
 })
@@ -46,10 +46,10 @@ router.get("/services/:serviceId", (req, res, next) => {
 router.put("/services/:serviceId", isAuthenticated, (req, res, next) => {
 
     const { serviceId } = req.params
-    const { title, images, packs } = req.body
+    const { title, images, coverImage, packs } = req.body
 
     Service
-        .findByIdAndUpdate(serviceId, { title, images, packs })
+        .findByIdAndUpdate(serviceId, { title, images, coverImage, packs })
         .then((service) => res.json(service))
         .catch(err => next(err))
 })
