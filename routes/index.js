@@ -14,4 +14,7 @@ module.exports = app => {
 
     const styleRoutes = require('./style.routes')
     app.use('/api', styleRoutes)
+
+    const uploadRoutes = require('./upload.routes')
+    app.use('/api/upload', uploadRoutes)
 }
