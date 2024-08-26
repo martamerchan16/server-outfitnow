@@ -14,7 +14,7 @@ router.get('/users', (req, res, next) => {
         .catch(err => next(err))
 })
 
-router.get('/users/:userId', /*isAuthenticated,*/(req, res, next) => {
+router.get('/users/:userId', isAuthenticated, (req, res, next) => {
 
     const { userId } = req.params
 
@@ -67,6 +67,18 @@ router.get('/users/role/:role', (req, res, next) => {
         .select({ userName: 1, avatar: 1, styles: 1, services: 1 })
         .populate('services styles')
         .then(specificRole => res.json(specificRole))
+        .catch(err => next(err))
+})
+
+router.get('/users/role/stylist/:userId', (req, res, next) => {
+
+    const { userId } = req.params
+
+    User
+        .findById(userId)
+        .select({ userName: 1, avatar: 1, styles: 1, services: 1, gallery: 1, aboutMe: 1, role: 1, location: 1 })
+        .populate('services styles')
+        .then(user => res.json(user))
         .catch(err => next(err))
 })
 
