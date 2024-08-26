@@ -83,6 +83,19 @@ router.get('/bookings/users/:userId', isAuthenticated, (req, res, next) => {
 
 })
 
+router.get('/bookings/stylist/:userId', (req, res, next) => {
+
+    const { userId: stylist } = req.params
+
+    Booking
+        .find({ stylist })
+        .populate('stylist client service')
+        .then(response => res.json(response))
+        .catch(err => next(err))
+
+
+})
+
 
 router.get('/bookings/services/:serviceId', isAuthenticated, (req, res, next) => {
     const { serviceId: service } = req.params
