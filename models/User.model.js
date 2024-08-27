@@ -35,6 +35,7 @@ const userSchema = new Schema(
     },
     aboutMe: {
       type: String,
+      maxLength: 600
     },
     role: {
       type: String,
