@@ -5,6 +5,7 @@ require('./../models/Service.model')
 require('./../models/User.model')
 
 const isAuthenticated = require('./../middleware/verifyToken')
+const Service = require('./../models/Service.model')
 
 router.post('/bookings', isAuthenticated, (req, res, next) => {
 
@@ -21,7 +22,6 @@ router.post('/bookings', isAuthenticated, (req, res, next) => {
         .then(() => res.sendStatus(201))
         .catch(err => next(err))
 })
-
 
 router.get('/bookings', isAuthenticated, (req, res, next) => {
 
@@ -45,7 +45,6 @@ router.get('/bookings/:bookingId', isAuthenticated, (req, res, next) => {
         .catch(err => next(err))
 })
 
-
 router.put('/bookings/:bookingId', isAuthenticated, (req, res, next) => {
 
     const { bookingId } = req.params
@@ -58,7 +57,6 @@ router.put('/bookings/:bookingId', isAuthenticated, (req, res, next) => {
 
 })
 
-
 router.delete('/bookings/:bookingId', isAuthenticated, (req, res, next) => {
 
     const { bookingId } = req.params
@@ -68,7 +66,6 @@ router.delete('/bookings/:bookingId', isAuthenticated, (req, res, next) => {
         .then(deletedBooking => res.json(deletedBooking))
         .catch(err => next(err))
 })
-
 
 router.get('/bookings/users/:userId', isAuthenticated, (req, res, next) => {
 
@@ -92,20 +89,40 @@ router.get('/bookings/stylist/:userId', (req, res, next) => {
         .populate('stylist client service')
         .then(response => res.json(response))
         .catch(err => next(err))
-
-
 })
 
+router.get('/bookings/services/bookingsData', isAuthenticated, (req, res, next) => {
 
-router.get('/bookings/services/:serviceId', isAuthenticated, (req, res, next) => {
-    const { serviceId: service } = req.params
+    let formattedData = []
 
-    Booking
-        .find({ service })
-        .populate('stylist client service')
-        .then(response => res.json(response))
+    Service
+        .find()
+        .then(allServices => {
+
+            formattedData = allServices.map(elm => {
+                return { mongoId: elm._id, id: elm.title, label: elm.title }
+            })
+
+            const promises = formattedData.map(elm => Booking.countDocuments({ service: elm.mongoId }))
+
+            Promise
+                .all(promises)
+                .then(bookingsByService => {
+
+                    formattedData = formattedData.map((eachData, idx) => {
+                        return { ...eachData, value: bookingsByService[idx] }
+                    })
+
+                    res.json(formattedData)
+                })
+                .catch(err => next(err))
+
+
+        })
         .catch(err => next(err))
-})
 
+
+
+})
 
 module.exports = router
