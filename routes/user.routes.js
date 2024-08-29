@@ -61,10 +61,12 @@ router.get("/users/services/:serviceId", (req, res, next) => {
 router.get('/users/role/:role', (req, res, next) => {
 
     const { role } = req.params
+    const { maxResults } = req.query
 
     User
         .find({ role: { $regex: role, $options: 'i' } })
-        .select({ userName: 1, avatar: 1, styles: 1, services: 1 })
+        .limit(maxResults)
+        .select({ userName: 1, avatar: 1, styles: 1, services: 1, gallery: 1 })
         .populate('services styles')
         .then(specificRole => res.json(specificRole))
         .catch(err => next(err))
